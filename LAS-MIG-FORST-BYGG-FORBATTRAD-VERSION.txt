@@ -2,28 +2,38 @@
 Koduppdatering och bygginstruktion för Windows x64
 Datum: 2026-10-24
 
-DET ENKLA SÄTTET – OM DU HAR DEN KOMPLETTA ORIGINALKOPIAN
-Ja: kopiera tillbaka de ändrade filerna till den kompletta projektkopian där
-src-tauri finns och kör byggkommandot pnpm tauri build.
-Med "byggskriptet" menas alltså kommandot nedan, inte en separat .bat- eller
-.ps1-fil på USB-minnet. I package.json finns skriptet "tauri": "tauri";
-pnpm tauri build använder det för att bygga desktopappen och installationen.
-Du behöver inte skapa en ny app.
+DET ENKLA SÄTTET – DUBBELKLICKA PÅ BYGGFILEN
+På USB-minnets huvudnivå finns nu BYGG-CHESSCOACH.cmd.
+En kopia finns även i ChessCoach2\chess-coach.
 
-1. Ta en säkerhetskopia av den kompletta projektkopian.
-2. Kopiera in uppdateringen på samma relativa sökvägar enligt fillistan nedan.
-   Behåll src-tauri. Sammanfoga package.json enligt avsnitt 2.
-3. När byggmiljö, beroenden och Stockfish är förberedda, öppna PowerShell i
-   din kompletta projektmapp, där både package.json och src-tauri finns, och kör:
+1. Säkerhetskopiera din kompletta originalkopia och för över koduppdateringen
+   enligt fillistan. Behåll src-tauri och sammanfoga eventuella egna ändringar.
+2. Kopiera BYGG-CHESSCOACH.cmd till samma mapp som package.json och src-tauri.
+   Den måste köras i den KOMPLETTA projektkopian, inte USB-kopian utan backend.
+3. Stäng Chess Coach och dubbelklicka på BYGG-CHESSCOACH.cmd.
+4. Läs resultatet i fönstret. Vid lyckat bygge: installera och provkör den nya
+   installationsfilen på sökvägen som byggkommandot skriver ut.
 
-     pnpm tauri build
+Byggfilen kör i ordning:
+  pnpm install --frozen-lockfile
+  pnpm sidecar
+  pnpm test
+  pnpm tauri build
 
-4. Installera och provkör det nya installationsprogrammet som bygget skapar.
+Den stannar vid fel, lämnar fönstret öppet och startar inte installationen själv.
+Den installerar inte Node, pnpm, Rust eller C++-verktygen åt dig. Dessa måste
+redan vara installerade; se förberedelserna nedan. Internet behövs för beroenden.
+Denna byggfil är avsedd för Windows x64 med Rust MSVC.
 
-Om originalkopian inte har andra egna ändringar är detta i praktiken allt.
+Stockfish söks via STOCKFISH_SRC, som stockfish.exe bredvid byggfilen,
+i projektets vanliga syskonmapp eller som redan förberedd x64-binär under
+src-tauri\binaries. Saknas motorn: kopiera x64-exe-filen från USB-mappens
+stockfish-windows-x86-64-universal\stockfish till projektmappen och ge KOPIAN
+namnet stockfish.exe.
+
+Om originalkopian inte har andra egna ändringar räcker normalt denna väg.
 Finns egna eller nyare ändringar behöver de först sammanfogas med uppdateringen.
-Att kopiera filerna enbart till USB-kopian räcker inte: där saknas src-tauri.
-De utförliga stegen längre ned beskriver förberedelser, tester och felsökning.
+De utförliga stegen längre ned beskriver manuell byggning, tester och felsökning.
 
 VIKTIGT: USB-MINNET INNEHÅLLER INTE EN FÄRDIG NY DESKTOPAPP.
 De förbättrade källfilerna finns i ChessCoach2\chess-coach.

@@ -10,6 +10,9 @@ The Stockfish binary and large external chess datasets are not included either.
 
 ## Start here
 
+- [Double-click Windows x64 build launcher](BYGG-CHESSCOACH.cmd): copy into a
+  complete project next to `package.json` and `src-tauri`, then run it. Requires
+  installed build tools; stops on errors and does not run the installer for you.
 - [Build and integration instructions, in Swedish](LAS-MIG-FORST-BYGG-FORBATTRAD-VERSION.txt)
 - [Changed source files from the two coaching iterations](ANDRADE-KALLFILER.txt)
 - [Source checksums for the USB handover snapshot](KALLFILER-SHA256.csv)

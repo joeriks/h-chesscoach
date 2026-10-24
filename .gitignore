@@ -7,6 +7,7 @@ dist
 /app/
 /publish-tested.ps1
 /.copy-backups/
+/.build-launcher-check/
 .env
 .env.*
 !.env.example

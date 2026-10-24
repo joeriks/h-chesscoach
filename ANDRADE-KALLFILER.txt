@@ -1,4 +1,5 @@
-﻿content\endgames\lessons.json
+﻿BYGG-CHESSCOACH.cmd
+content\endgames\lessons.json
 package.json
 scripts\validate-training-content.mjs
 src\App.tsx
