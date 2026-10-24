@@ -2,6 +2,25 @@
 Koduppdatering och bygginstruktion för Windows x64
 Datum: 2026-10-24
 
+DET ENKLA SÄTTET – OM DU HAR DEN KOMPLETTA ORIGINALKOPIAN
+Ja: kopiera tillbaka de ändrade filerna till den kompletta projektkopian där
+src-tauri finns och kör projektets byggskript. Du behöver inte skapa en ny app.
+
+1. Ta en säkerhetskopia av den kompletta projektkopian.
+2. Kopiera in uppdateringen på samma relativa sökvägar enligt fillistan nedan.
+   Behåll src-tauri. Sammanfoga package.json enligt avsnitt 2.
+3. När byggmiljö, beroenden och Stockfish är förberedda, öppna PowerShell i
+   mappen med package.json och kör:
+
+     pnpm tauri build
+
+4. Installera och provkör det nya installationsprogrammet som bygget skapar.
+
+Om originalkopian inte har andra egna ändringar är detta i praktiken allt.
+Finns egna eller nyare ändringar behöver de först sammanfogas med uppdateringen.
+Att kopiera filerna enbart till USB-kopian räcker inte: där saknas src-tauri.
+De utförliga stegen längre ned beskriver förberedelser, tester och felsökning.
+
 VIKTIGT: USB-MINNET INNEHÅLLER INTE EN FÄRDIG NY DESKTOPAPP.
 De förbättrade källfilerna finns i ChessCoach2\chess-coach.
 Rust-backenden src-tauri saknas på USB-minnet. Använd din egen kompletta
