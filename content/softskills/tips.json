@@ -1,0 +1,42 @@
+{
+  "opening_time": {
+    "why": "Clock spent in the first ten moves is clock missing in the critical middlegame, where the games are decided.",
+    "action": "Drill your repertoire until moves 1–8 are automatic; aim for under 15% of the clock by move 10."
+  },
+  "time_trouble": {
+    "why": "Under 10% of the starting time the error rate climbs steeply, whatever the position.",
+    "action": "Set a checkpoint: at move 30 you must have at least a third of your clock left. If not, play faster, simpler moves until you do."
+  },
+  "blunders_low_clock": {
+    "why": "Blunders under a minute are not calculation errors but speed errors: the same player sees the tactic with time.",
+    "action": "Before every move with under 60 seconds, run the three-second scan: checks, captures, threats, then play."
+  },
+  "fast_blunders": {
+    "why": "A move played in under five seconds in a sharp position skips the calculation entirely.",
+    "action": "In tense positions, sit on your hands: name the opponent's threat out loud (in your head) before you touch a piece."
+  },
+  "long_thinks": {
+    "why": "A very long think that still ends in a mistake means the candidate moves were wrong, not the depth.",
+    "action": "Cap your thinks: list three candidates first, then calculate; if nothing is clear after a few minutes, play the safest candidate."
+  },
+  "tilt": {
+    "why": "After a loss the next game is played with a different goal, revenge, and that goal loses games.",
+    "action": "Rule: after two losses in a row, stop playing for the day and review one of the losses instead."
+  },
+  "fatigue": {
+    "why": "Attention drops with each game in a session; the later games are played by a weaker version of you.",
+    "action": "Play at most two or three games per session, then do puzzles or a review instead of a fourth game."
+  },
+  "conversion": {
+    "why": "A winning position is not a point yet; the drop usually comes from playing for more instead of simplifying.",
+    "action": "When ahead, trade pieces, not pawns; ask before every move what the opponent's last swindle could be."
+  },
+  "resilience": {
+    "why": "Lost positions are saved by stubborn defence far more often than players expect; resigning early gives away half points.",
+    "action": "In a lost position, find the opponent's most unpleasant plan and make it as hard as possible; set one problem per move."
+  },
+  "premature_resignation": {
+    "why": "The engine still rated these positions as holdable; the result was decided by the resignation, not the moves.",
+    "action": "Never resign on a feeling: resign only when you can name the concrete winning plan for the opponent."
+  }
+}

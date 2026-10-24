@@ -1,0 +1,197 @@
+﻿CHESS COACH – LÄS MIG FÖRST
+Koduppdatering och bygginstruktion för Windows x64
+Datum: 2026-10-24
+
+VIKTIGT: USB-MINNET INNEHÅLLER INTE EN FÄRDIG NY DESKTOPAPP.
+De förbättrade källfilerna finns i ChessCoach2\chess-coach.
+Rust-backenden src-tauri saknas på USB-minnet. Använd din egen kompletta
+projektkopia som grund. Stockfish.exe är bara schackmotorn, inte Chess Coach.
+Att kopiera dist eller öppna index.html uppdaterar inte en installerad app.
+
+SNABB ÖVERSIKT
+1. Säkerhetskopiera din kompletta projektkopia och appdata.
+2. För över de ändrade källfilerna till en arbetskopia av ditt kompletta projekt.
+3. Behåll och kontrollera din egen src-tauri, konfiguration och versionslås.
+4. Installera beroenden, kör tester och provkör desktopappen.
+5. Bygg ett nytt installationsprogram och testa den installerade versionen.
+
+VAD HAR ÄNDRATS?
+- Personliga träningsförslag på Today: uppgifter inom vald tidsbudget,
+  förfallna repetitioner och återkommande problem med synlig motivering.
+  Små partiunderlag ger förslag om granskning, inte en säker svaghetsdiagnos.
+- Mittspel: 12 granskade ställningar i sex teman. Spelaren väljer både plan
+  och motståndarresurs före facit. Kontrastövningar kräver att planen anpassas
+  när exempelvis en schack, bindning eller ett hot mot en pjäs tillkommer.
+- Sparade mittspelsresultat, säkerhet i svaret och fördröjd repetition.
+  Första försök på kontrollställningar skiljs från senare minnesrepetition.
+- Partigenomgång: egen reflektion före motorfacit och valbara kritiska lägen.
+- Egna partiövningar: bättre variantkontroll och separat motorkontroll av
+  alternativa drag. Saknas tillförlitligt motorsvar lämnas draget obedömt.
+- Öppningar: förklaringar ligger kvar tills spelaren går vidare.
+  Avvikelse från repertoaren beskrivs inte automatiskt som dåligt schack.
+- Slutspel: korrigerade ledtrådar, uttryckligt promotionsval, krav på alla
+  lektionsställningar och bättre hantering av sparfel.
+- Statistik: tydligare osäkerhet, fördröjd återkallning och jämförelse med
+  senare egna partier. Ingen utfästelse om faktisk ratingökning.
+
+1. FÖRBERED EN KOMPLETT ARBETSKOPIA
+Stäng den installerade appen. Ta en separat kopia av hela ditt befintliga
+projekt innan du ändrar något. Arbeta på datorns disk, inte direkt på USB.
+Om du använder Git: spara pågående arbete och skapa en separat arbetsgren.
+Behåll även appdata innan du provkör en ny backend/installation.
+Projektets README anger %APPDATA%\ChessCoach för databasen; kontrollera att
+det stämmer med din version och kopiera hela datamappen när appen är stängd.
+Ny lokal träningshistorik använder även WebView/localStorage. En kopia av
+coach.sqlite ensam är därför inte en fullständig backup av all träningsdata.
+
+Exempel på arbetsmapp i denna instruktion:
+  C:\Projekt\ChessCoach-komplett\chess-coach
+
+I den mappen ska både package.json och src-tauri\Cargo.toml finnas.
+Behåll hela din src-tauri: Rust-kod, Cargo.lock, Tauri-konfiguration,
+capabilities/behörigheter, resurser och eventuella egna bygganpassningar.
+Om du bara har ett gammalt installationsprogram men ingen backendkällkod
+räcker det inte för att bygga denna uppdatering.
+
+2. FÖR ÖVER ÄNDRINGARNA
+USB-enhetens bokstav kan vara en annan än D: på din dator.
+De aktuella filerna finns under:
+  <USB>:\ChessCoach2\chess-coach
+
+Den exakta samlade filförteckningen för båda förbättringsomgångarna finns i:
+  <USB>:\ChessCoach2\ANDRADE-KALLFILER.txt
+Kontrollsummor för samma filer finns i KALLFILER-SHA256.csv.
+Sökvägarna i listan är relativa till mappen med package.json.
+
+Om din projektkopia har samma frontend som USB-projektets ursprung:
+- Kopiera de listade filerna under src, content och scripts till samma
+  relativa sökvägar i din kompletta arbetskopia. Ta med alla nya testfiler.
+- package.json ska SAMMANFOGAS: det tillagda skriptet är
+    "test:content": "node scripts/validate-training-content.mjs"
+  Behåll dina övriga skript och beroenden. Beroendeversionerna och
+  pnpm-lock.yaml har inte uppgraderats i den här förbättringen.
+
+Om din kopia har egna eller nyare frontendändringar:
+- Jämför och sammanfoga de listade filerna i en editor, i stället för att
+  skriva över dem blint. Kontrollera särskilt App.tsx och navigation.ts.
+- De gamla filerna från före respektive iteration finns under USB-mappens
+  ChessCoach2\backups. De är jämförelseunderlag, inte en komplett backend.
+- Kontrollera att frontendens kontrakt i src\lib\ipc.ts stämmer med din
+  Rust-backend. Den filen är inte ändrad här, men versionerna måste passa.
+
+Radera inte backendfiler för att de saknas på USB-minnet. Använd inte
+robocopy /MIR eller någon annan spegling med radering mot din kompletta kopia.
+För inte över node_modules, gamla dist-filer eller tsconfig.tsbuildinfo.
+De genereras lokalt. Kopiera gärna docs\verification för bedömningarna.
+
+3. BYGGVERKTYG
+Följande arbetsgång gäller Windows x64; USB:ns motorkopieringsskript använder
+namnet stockfish-x86_64-pc-windows-msvc.exe och är inte en ARM64-anvisning.
+
+Du behöver:
+- Rust med Windows MSVC-verktygskedja.
+- Microsoft C++ Build Tools med arbetslasten Desktop development with C++
+  och Windows SDK.
+- Microsoft Edge WebView2 Runtime.
+- Node.js och pnpm som är kompatibla med projektets paket. Använd i första
+  hand din kompletta kopias fungerande verktygsversioner; annars en stödd
+  Node LTS-version som uppfyller paketens engines-krav.
+- Internet för hämtning av beroenden och eventuella byggverktyg.
+
+Officiell installationshjälp:
+https://v2.tauri.app/start/prerequisites/
+Officiell Windows-bygginstruktion:
+https://v2.tauri.app/distribute/windows-installer/
+
+4. INSTALLERA BEROENDEN OCH FÖRBERED MOTORN
+Öppna PowerShell i din kompletta arbetskopia. Anpassa sökvägarna nedan.
+Kör EN RAD I TAGET. Fortsätt bara när kommandot lyckats utan fel.
+
+  Set-Location 'C:\Projekt\ChessCoach-komplett\chess-coach'
+  Test-Path '.\src-tauri\Cargo.toml'
+  node --version
+  pnpm --version
+  rustc -Vv
+  cargo --version
+  pnpm install --frozen-lockfile
+
+Test-Path måste ge True. Rust-värden bör vara x86_64-pc-windows-msvc för
+arbetsgången här. Vid låsfilskonflikt: lös package.json/låsfil tillsammans;
+radera inte låsfilen eller uppgradera alla paket som första felsökningssteg.
+
+Kopiera Stockfish-mappen från USB till exempelvis C:\Verktyg\stockfish,
+eller behåll den som syskonmapp enligt projektets README. Ange den verkliga
+sökvägen till motorn för denna PowerShell-session, exempel:
+
+  $env:STOCKFISH_SRC = 'C:\Verktyg\stockfish\stockfish-windows-x86-64-universal.exe'
+  pnpm sidecar
+
+Skriptet kopierar motorn till src-tauri\binaries med rätt x64-suffix.
+Kontrollera i din Tauri-konfiguration att bundle.externalBin motsvarar
+stockfish-binarien. Gör detta först när den riktiga src-tauri finns på plats;
+sidecar-skriptet kan annars skapa en tom src-tauri-mapp med bara en binär.
+
+5. TESTA OCH PROVKÖR DEN KOMPLETTA APPEN
+Kör från samma arbetsmapp, en rad i taget:
+
+  pnpm lint
+  pnpm test
+  pnpm test:content
+  pnpm build
+  cargo fmt --manifest-path src-tauri/Cargo.toml --check
+  cargo test --manifest-path src-tauri/Cargo.toml
+  pnpm tauri dev
+
+pnpm build bygger bara webbgränssnittet. pnpm tauri dev startar hela appen.
+Kontrollera att din Tauri-konfiguration använder rätt frontendDist (normalt
+../dist från src-tauri), rätt devUrl (projektets Vite-port är 1420) och
+korrekta beforeDevCommand/beforeBuildCommand för projektets frontend.
+Ändra inte appens identifierare eller datalagringssökvägar i onödan.
+
+Kontrollera i den riktiga desktopappen:
+[ ] Today visar motiverade träningsförslag.
+[ ] Middlegame kräver plan + motståndarresurs före facit.
+[ ] Resultatet finns kvar efter att appen stängts och startats igen.
+[ ] Nästa mittspelsövning ändras efter resultat; hopp mellan sidor fungerar.
+[ ] Ett eget parti kan importeras, analyseras och öppnas för reflektion.
+[ ] Motoranalys och alternativkontroll fungerar för både vit och svart.
+[ ] Sparade försök och träningsplaner fungerar även efter omstart.
+[ ] Slutspelsdomslut, promotion och slutförande av alla lektionslägen fungerar.
+
+Vid okänt IPC-kommando eller fel fältnamn: jämför src\lib\ipc.ts med
+backendens registrerade kommandon och returtyper. Lös versionsskillnaden;
+dölj inte felet genom att visa lyckad träning utan faktiskt sparande.
+
+6. BYGG OCH TESTA INSTALLATIONEN
+Stäng utvecklingsappen och avsluta pnpm tauri dev med Ctrl+C. Kör sedan:
+
+  pnpm tauri build
+
+Detta bygger frontend + Rust-app och paketerar enligt din Tauri-konfiguration.
+Projektets README anger en NSIS-installation, normalt under:
+  src-tauri\target\release\bundle\nsis\
+med ett namn liknande Chess Coach_<version>_x64-setup.exe.
+En anpassad Cargo-målmapp eller explicit target kan ändra sökvägen; använd
+sökvägen i byggkommandots slutmeddelande. Saknas installerare, kontrollera
+bundle.active/bundle.targets i din egen konfiguration och eventuella byggfel.
+
+Installera den NYBYGGDA filen och provkör även den installerade appen.
+Verifiera att den verkligen visar Middlegame och de personliga prioriteringarna.
+Kopiera gärna de stora puzzle-/Elite-mapparna från USB till datorn och välj
+dem i appens inställningar, så att användningen inte kräver att USB sitter i.
+Ta med projektets licens- och tredjepartsinformation vid vidare distribution.
+
+VAD ÄR REDAN VERIFIERAT – OCH VAD ÅTERSTÅR?
+- 113 frontendtester har verifierats; innehållstesterna omfattar bland annat
+  62 konkreta lagliga schackfortsättningar och taktiska/strukturella fakta.
+- ESLint, TypeScript och webbgränssnittets produktionsbygge är godkända.
+- Browserflödet för prioritering, svar, återkoppling och lokal lagring har testats.
+- Rust-backenden, verklig motor/databas-integration och nytt installationspaket
+  har INTE kunnat verifieras här, eftersom backendkällan saknades.
+- Dessa steg måste därför göras med din kompletta projektkopia innan den
+  förbättrade desktopversionen betraktas som färdig.
+
+Fördjupning på USB:
+  ChessCoach2\chess-coach\docs\verification\coach-review.md
+  ChessCoach2\chess-coach\docs\verification\coach-review-iteration-2.md
+  ChessCoach2\chess-coach\README.md

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "chessground/assets/chessground.base.css";
+@import "chessground/assets/chessground.brown.css";
+@import "chessground/assets/chessground.cburnett.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-neutral-900 text-neutral-100 antialiased;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}

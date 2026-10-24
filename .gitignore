@@ -1,0 +1,24 @@
+node_modules
+dist
+*.log
+*.tsbuildinfo
+
+# Local staging copy and USB publishing helper (not part of the application)
+/app/
+/publish-tested.ps1
+/.copy-backups/
+.env
+.env.*
+!.env.example
+
+# Historical local UI captures; current verification artifacts are published
+/docs/phase*/
+/docs/stats/
+
+# Rust / Tauri build output
+src-tauri/target
+src-tauri/gen/schemas
+
+# Stockfish sidecar is copied in by `pnpm sidecar` from the folder next to this app (about 100 MB)
+src-tauri/binaries/*
+!src-tauri/binaries/.gitkeep

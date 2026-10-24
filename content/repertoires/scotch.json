@@ -1,0 +1,106 @@
+{
+  "key": "scotch",
+  "name": "Scotch Game",
+  "color": "white",
+  "against": null,
+  "style": "aggressive",
+  "sharpness": 70,
+  "initiative": 70,
+  "theoryLoad": 3,
+  "minRating": 1200,
+  "ecoPrefixes": ["C44", "C45"],
+  "summary": "Open the centre on move 3 and play with active pieces. More forcing than the Italian, with a few lines worth knowing by heart.",
+  "lines": [
+    {
+      "key": "classical",
+      "name": "Classical: 4...Bc5 5.Be3",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "d4",
+        "exd4",
+        "Nxd4",
+        "Bc5",
+        "Be3",
+        "Qf6",
+        "c3",
+        "Nge7",
+        "Bc4",
+        "Ne5",
+        "Be2",
+        "Qg6",
+        "O-O",
+        "d6",
+        "f3"
+      ],
+      "notes": {
+        "5": "d4 at once: Black must take, and the open centre favours the side with the lead in development.",
+        "9": "Be3 defends d4 and asks the bishop on c5 what it is doing; 5...Qf6 keeps the pressure on d4.",
+        "11": "c3 bolsters d4 and prepares Bc4 or Be2 and f4 later.",
+        "17": "Castled with a solid centre. The f-pawn goes to f3 (not f4 yet) to keep e4 and stop ...Ng4 ideas.",
+        "19": "f3: the structure is safe; plans are Kh1, f4 to kick the knight, and pressure on the d-file."
+      }
+    },
+    {
+      "key": "mieses",
+      "name": "Mieses: 4...Nf6 5.Nxc6",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "d4",
+        "exd4",
+        "Nxd4",
+        "Nf6",
+        "Nxc6",
+        "bxc6",
+        "e5",
+        "Qe7",
+        "Qe2",
+        "Nd5",
+        "c4",
+        "Ba6",
+        "b3",
+        "g6",
+        "f4"
+      ],
+      "notes": {
+        "9": "Nxc6 and e5 is the whole point: the knight is chased and Black's pawns are doubled on the c-file.",
+        "13": "Qe2 covers e5 and keeps the queens on; Black's queen on e7 is awkwardly placed in front of the bishop.",
+        "15": "c4 hits the knight; ...Ba6 pins the pawn for a moment, which b3 solves.",
+        "19": "f4 cements e5. White's plan is Bb2, Nd2-f3 and queenside play; Black's king is often slow to find a home."
+      }
+    },
+    {
+      "key": "steinitz",
+      "name": "Steinitz: 4...Qh4",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "d4",
+        "exd4",
+        "Nxd4",
+        "Qh4",
+        "Nc3",
+        "Bb4",
+        "Be2",
+        "Qxe4",
+        "Ndb5",
+        "Bxc3+",
+        "bxc3",
+        "Kd8",
+        "O-O"
+      ],
+      "notes": {
+        "9": "Nc3 develops and lets the e-pawn go: the queen on e4 will be hit with tempo.",
+        "13": "Ndb5 threatens Nxc7+; Black has to give the bishop and move the king.",
+        "17": "O-O: White is a pawn down but far ahead in development and Black's king sits on d8. Play Ba3, Re1 and Qd2 with the initiative."
+      }
+    }
+  ]
+}

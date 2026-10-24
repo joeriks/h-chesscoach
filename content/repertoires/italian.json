@@ -1,0 +1,114 @@
+{
+  "key": "italian",
+  "name": "Italian Game (Giuoco Pianissimo)",
+  "color": "white",
+  "against": null,
+  "style": "mixed",
+  "sharpness": 40,
+  "initiative": 50,
+  "theoryLoad": 2,
+  "minRating": 0,
+  "ecoPrefixes": ["C50", "C53", "C54", "C55"],
+  "summary": "Slow build-up with c3 and d3, then the knight manoeuvre Nb1-d2-f1-g3. Few forced lines, plans that work at every level.",
+  "lines": [
+    {
+      "key": "main",
+      "name": "Main line: 3...Bc5 4.c3 Nf6 5.d3",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "Bc4",
+        "Bc5",
+        "c3",
+        "Nf6",
+        "d3",
+        "d6",
+        "O-O",
+        "O-O",
+        "Re1",
+        "a6",
+        "Bb3",
+        "Ba7",
+        "h3",
+        "h6",
+        "Nbd2",
+        "Re8",
+        "Nf1",
+        "Be6",
+        "Ng3"
+      ],
+      "notes": {
+        "7": "c3 prepares d4 later and gives the bishop a retreat on c2. No hurry: the centre stays closed.",
+        "9": "d3 keeps the e4 pawn solid. The fight is about the d4 square and the f5 square for a knight.",
+        "15": "Bb3 steps out of ...Na5 and ...d5 tricks before they happen.",
+        "19": "The knight starts its route d2-f1-g3 (or e3). From g3 it eyes f5; from e3 it covers d5.",
+        "23": "Ng3: the typical Pianissimo set-up is complete. Plans now: d4 at the right moment, or Nh4-f5 against the king."
+      }
+    },
+    {
+      "key": "two-knights",
+      "name": "Two Knights: 3...Nf6 4.d3",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "Bc4",
+        "Nf6",
+        "d3",
+        "Be7",
+        "O-O",
+        "O-O",
+        "Re1",
+        "d6",
+        "a4",
+        "Na5",
+        "Ba2",
+        "c5",
+        "c3",
+        "Nc6",
+        "Nbd2"
+      ],
+      "notes": {
+        "7": "4.d3 sidesteps the Fried Liver theory and keeps the same quiet structure as the main line.",
+        "13": "a4 gains space and stops ...b5; it also gives the bishop the a2 square after ...Na5.",
+        "15": "Ba2 keeps the strong diagonal towards f7. The knight on a5 will have to come back.",
+        "19": "Same plan as always: the d2 knight heads for f1 and g3, and d4 comes when it is prepared."
+      }
+    },
+    {
+      "key": "bc5-a6",
+      "name": "3...Nf6 4.d3 Bc5: the early ...a6 set-up",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "Bc4",
+        "Nf6",
+        "d3",
+        "Bc5",
+        "c3",
+        "d6",
+        "O-O",
+        "a6",
+        "Bb3",
+        "Ba7",
+        "Re1",
+        "O-O",
+        "h3",
+        "Ne7",
+        "Nbd2",
+        "Ng6",
+        "Nf1"
+      ],
+      "notes": {
+        "9": "Against the bishop on c5 the plan is unchanged: c3, d3, castle, and only then think about d4.",
+        "17": "h3 takes g4 away from the bishop and knight before Nbd2, so nothing is pinned.",
+        "21": "Nf1 and Ng3 follow; if Black plays ...Ng6 the e3 route (Nf1-e3) is often better, covering d5 and f5."
+      }
+    }
+  ]
+}

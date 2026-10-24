@@ -1,0 +1,79 @@
+{
+  "key": "scandinavian",
+  "name": "Scandinavian Defence (...Qa5)",
+  "color": "black",
+  "against": "e4",
+  "style": "tactical",
+  "sharpness": 60,
+  "initiative": 55,
+  "theoryLoad": 2,
+  "minRating": 0,
+  "ecoPrefixes": ["B01"],
+  "summary": "One set-up against everything: ...Qa5, ...c6, ...Bf5 and ...e6. Easy to learn, with a few sharp tricks to know.",
+  "lines": [
+    {
+      "key": "main",
+      "name": "Main line: 3.Nc3 Qa5 4.d4 Nf6 5.Nf3",
+      "moves": [
+        "e4",
+        "d5",
+        "exd5",
+        "Qxd5",
+        "Nc3",
+        "Qa5",
+        "d4",
+        "Nf6",
+        "Nf3",
+        "c6",
+        "Bc4",
+        "Bf5",
+        "Bd2",
+        "e6",
+        "Qe2",
+        "Bb4",
+        "O-O-O",
+        "Nbd7",
+        "a3",
+        "Bxc3",
+        "Bxc3",
+        "Qc7"
+      ],
+      "notes": {
+        "6": "...Qa5 keeps the queen active and pins the c3 knight once the bishop lands on b4.",
+        "10": "...c6 gives the queen a retreat on c7 and controls d5. Play it before ...Bf5.",
+        "12": "...Bf5 before ...e6: the bishop is out, and ...e6 next makes the structure a Caro-Kann with an active queen.",
+        "16": "...Bb4 pins; White usually breaks it with a3 or plays O-O-O and a3 later.",
+        "22": "...Qc7 and ...O-O-O or ...O-O: Black is solid, and the half-open d-file and ...e5 give counterplay."
+      }
+    },
+    {
+      "key": "bd2-ne4",
+      "name": "5.Nf3 c6 6.Bd2 (the Bd2 trick)",
+      "moves": [
+        "e4",
+        "d5",
+        "exd5",
+        "Qxd5",
+        "Nc3",
+        "Qa5",
+        "d4",
+        "Nf6",
+        "Nf3",
+        "c6",
+        "Bd2",
+        "Bf5",
+        "Bc4",
+        "e6",
+        "Qe2",
+        "Bb4",
+        "O-O-O",
+        "Nbd7",
+        "Nd5"
+      ],
+      "notes": {
+        "11": "Bd2 prepares Nd5 or Ne4 ideas against the queen. Stay calm: ...Bf5 and ...e6 keep everything covered.",
+        "19": "Nd5 is the trick: after ...Qd8 (not ...cxd5?? Bxb4) the queen is safe and the knight must retreat or trade; Black is fine."
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "units": [
+    {
+      "id": 1,
+      "title": "Foundations",
+      "lessons": [
+        {
+          "id": "kq-mate",
+          "title": "Queen and king against king",
+          "concept": "The queen alone cannot mate: she boxes the enemy king in, the king walks up, and the mate comes on the edge. Keep the queen a knight's move away from the enemy king so it can never approach her, and never give stalemate: when the king is on the edge, check that it still has a move before you tighten the box.",
+          "positions": [
+            {
+              "fen": "8/8/8/4k3/8/8/8/4K2Q w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "mate",
+              "note": "Box first (Qh4 or Qf3 shrinks the king's area), then bring the king. Mate within about 10 moves."
+            }
+          ]
+        },
+        {
+          "id": "kr-mate",
+          "title": "Rook and king against king",
+          "concept": "The rook cuts the board in half; the king takes the opposition; the rook checks when the kings face each other. If the enemy king avoids the opposition, make a waiting move with the rook along its rank. The whole mate is a staircase down to the edge.",
+          "positions": [
+            {
+              "fen": "8/8/8/3k4/8/8/8/R3K3 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "mate",
+              "note": "Cut the king off with the rook (Ra4 or Ra5?), bring the king, and push the enemy king back rank by rank."
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "title": "The opposition",
+          "concept": "In king and pawn endings with a non-rook pawn, the king in front of its pawn often wins with the opposition: the kings face each other with one square between, and the other side must move. A king on the sixth rank in front of a non-rook pawn usually wins, but rook pawns are a key exception because the edge limits the king's route. Drive the enemy king off the promotion square by stepping diagonally forward when he steps aside.",
+          "positions": [
+            {
+              "fen": "3k4/8/3K4/3P4/8/8/8/8 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "King on the sixth in front of the pawn: step to the side the enemy king is not on (Kc6 or Ke6), then push."
+            }
+          ]
+        },
+        {
+          "id": "square-of-the-pawn",
+          "title": "The square of the pawn",
+          "concept": "Draw a square from the pawn to its promotion square. If the defending king can step into that square on its move, it catches the pawn; if not, the pawn runs. Count before you commit your king: one tempo decides these endings.",
+          "positions": [
+            {
+              "fen": "8/6k1/8/8/1P6/8/8/6K1 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "The black king is outside the square of the pawn after b5. Run."
+            },
+            {
+              "fen": "8/8/8/8/1P3k2/8/8/6K1 b - - 0 1",
+              "side": "black",
+              "goal": "draw",
+              "success": "draw",
+              "note": "You are Black. Step into the square now and the pawn is caught; one wasted move and it queens."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "King and pawn endings",
+      "lessons": [
+        {
+          "id": "outside-passed-pawn",
+          "title": "The outside passed pawn",
+          "concept": "A passed pawn far from the other pawns is a decoy: the enemy king must go and catch it, and while he is away your king eats the pawns on the other side. Push the outside pawn at the right moment, not necessarily at once, and keep counting king moves.",
+          "positions": [
+            {
+              "fen": "8/8/3k4/4p3/P3P3/3K4/8/8 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "The a-pawn drags the black king to the queenside; your king then wins e5 and escorts the e-pawn."
+            }
+          ]
+        },
+        {
+          "id": "breakthrough",
+          "title": "The pawn breakthrough",
+          "concept": "Connected pawns against fewer or blocked pawns can create a passed pawn by force when the kings are far away: give up pawns so that one runs through. The pattern is b6!, and whichever pawn takes, another pawn advances past it. Look for it whenever the pawns face each other and the enemy king is out of reach.",
+          "positions": [
+            {
+              "fen": "8/p1p5/8/PPP5/8/7k/8/7K w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "Both kings are far away. Find the pawn sacrifice that creates a runner."
+            }
+          ]
+        },
+        {
+          "id": "reti",
+          "title": "The Réti manoeuvre",
+          "concept": "A king can chase a pawn and support its own pawn at the same time by moving on the diagonal: every diagonal step gains a square in two directions. Réti's study looks lost for White, yet the king on its way to the h-pawn also threatens to support c6-c7. Think of the king's path as a diagonal, never a straight line.",
+          "positions": [
+            {
+              "fen": "7K/8/k1P5/7p/8/8/8/8 w - - 0 1",
+              "side": "white",
+              "goal": "draw",
+              "success": "draw",
+              "note": "The h-pawn looks unstoppable. Walk the king diagonally: towards the h-pawn and the c-pawn at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Rook endings",
+      "lessons": [
+        {
+          "id": "lucena",
+          "title": "The Lucena position (building a bridge)",
+          "concept": "King in front of the pawn on the seventh, enemy king cut off by one file: the win is to build a bridge. Put the rook on the fourth rank, walk the king out of the pawn's way, and when the checks come, block them with the rook on the fourth. Every rook ending with an extra pawn aims for this picture.",
+          "positions": [
+            {
+              "fen": "1K1k4/1P6/8/8/8/8/r7/2R5 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "First drive the black king one more file away with a check, then Rc4 (or Rd4) and the bridge."
+            }
+          ]
+        },
+        {
+          "id": "philidor",
+          "title": "The Philidor position (the third-rank defence)",
+          "concept": "A pawn down in a rook ending with your king in front of the pawn: keep the rook on your third rank (the sixth from White's side) so the enemy king cannot cross. The moment the pawn advances to that rank, swing the rook behind and check from the back: the king has no shelter.",
+          "positions": [
+            {
+              "fen": "4k3/8/8/4K3/4P3/8/1r6/R7 b - - 0 1",
+              "side": "black",
+              "goal": "draw",
+              "success": "draw",
+              "holdMoves": 12,
+              "note": "You are Black. Put the rook on the sixth rank and keep it there until the pawn comes to e6; then go behind it with checks."
+            }
+          ]
+        },
+        {
+          "id": "rook-behind-passed-pawn",
+          "title": "The rook belongs behind the passed pawn",
+          "concept": "Whose rook is behind the passed pawn? That rook gains strength every time the pawn advances, while the rook in front loses squares. With your rook behind your own pawn, push it to the seventh: the enemy rook is tied to the file and your king walks over to collect it.",
+          "positions": [
+            {
+              "fen": "r7/6k1/P7/1K6/8/8/8/R7 w - - 0 1",
+              "side": "white",
+              "goal": "win",
+              "success": "promote",
+              "note": "The black rook is stuck in front of the pawn. Bring the king to b7 and the rook falls, or the pawn queens."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
