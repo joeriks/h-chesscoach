@@ -4,13 +4,17 @@ Datum: 2026-10-24
 
 DET ENKLA SÄTTET – OM DU HAR DEN KOMPLETTA ORIGINALKOPIAN
 Ja: kopiera tillbaka de ändrade filerna till den kompletta projektkopian där
-src-tauri finns och kör projektets byggskript. Du behöver inte skapa en ny app.
+src-tauri finns och kör byggkommandot pnpm tauri build.
+Med "byggskriptet" menas alltså kommandot nedan, inte en separat .bat- eller
+.ps1-fil på USB-minnet. I package.json finns skriptet "tauri": "tauri";
+pnpm tauri build använder det för att bygga desktopappen och installationen.
+Du behöver inte skapa en ny app.
 
 1. Ta en säkerhetskopia av den kompletta projektkopian.
 2. Kopiera in uppdateringen på samma relativa sökvägar enligt fillistan nedan.
    Behåll src-tauri. Sammanfoga package.json enligt avsnitt 2.
 3. När byggmiljö, beroenden och Stockfish är förberedda, öppna PowerShell i
-   mappen med package.json och kör:
+   din kompletta projektmapp, där både package.json och src-tauri finns, och kör:
 
      pnpm tauri build
 
